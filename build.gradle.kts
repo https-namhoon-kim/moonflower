@@ -1,8 +1,25 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath(libs.android.gradle.plugin)
+        classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.hilt.android.gradle.plugin)
+    }
+}
+
 plugins {
-    //trick: for the same plugin versions in all sub-modules
-    alias(libs.plugins.androidApplication).apply(false)
-    alias(libs.plugins.androidLibrary).apply(false)
-    alias(libs.plugins.kotlinAndroid).apply(false)
-    alias(libs.plugins.kotlinMultiplatform).apply(false)
-    alias(libs.plugins.kotlinCocoapods).apply(false)
+    id("com.diffplug.spotless") version "6.4.1"
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13" apply false
+    id("org.jetbrains.compose") version "1.5.3"
+}
+
+spotless {
+    kotlin {
+        target("**/*.kt")
+        ktlint(libs.versions.ktlint.get()).userData(mapOf("max_line_length" to "100"))
+    }
 }

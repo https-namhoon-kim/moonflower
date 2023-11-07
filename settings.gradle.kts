@@ -14,6 +14,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MoonFlower"
+//rootProject.name = "MoonFlower"
+rootProject.name = "moonflower"
 include(":androidApp")
 include(":shared")
