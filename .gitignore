@@ -2,6 +2,7 @@
 .idea/
 .DS_STORE
 /build
+/buildSrc/build
 /shared/build
 /androidApp/build
 /iosApp/Pods
