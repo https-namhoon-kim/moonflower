@@ -1,3 +1,9 @@
 .gradle/
 .idea/
 .DS_STORE
+/build
+/shared/build
+/androidApp/build
+/iosApp/Pods
+*.xcodeproj/*
+*.xcworkspace
