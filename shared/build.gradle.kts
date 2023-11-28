@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("com.squareup.sqldelight")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -42,11 +43,28 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+
+                // database
+                implementation(libs.squareup.sqldelight)
+                implementation(libs.squareup.sqldelight.coroutines.extensions)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(libs.kotlinx.test)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                // database
+                implementation(libs.squareup.sqldelight.android)
+            }
+
+        }
+        val iosMain by getting {
+            dependencies {
+                // database
+                implementation(libs.squareup.sqldelight.native)
             }
         }
     }

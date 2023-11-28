@@ -45,12 +45,16 @@ uiAutomator = "2.2.0"
 viewModelCompose = "2.5.1"
 work = "2.7.1"
 systemuicontroller = "0.30.1"
-
+sqldelight = "1.5.5"
 
 [libraries]
 #for kmm
 kotlinx-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
-
+squareup-sqldelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelight" }
+squareup-sqldelight-coroutines-extensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+squareup-sqldelight-android = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelight" }
+squareup-sqldelight-native = { module = "com.squareup.sqldelight:native-driver", version.ref = "sqldelight" }
+squareup-sqldelight-gradle-plugin = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqldelight" }
 
 # android
 accessibility-test-framework = { module = "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework", version.ref = "accessibilityTestFramework" }
