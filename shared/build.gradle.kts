@@ -81,3 +81,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.example.moonflowerproto.database"
+        sourceFolders = listOf("sqldelight")
+    }
+}
