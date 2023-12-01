@@ -84,7 +84,7 @@ android {
 
 sqldelight {
     database("AppDatabase") {
-        packageName = "com.example.moonflowerproto.database"
+        packageName = "com.kmm.moonflower.database"
         sourceFolders = listOf("sqldelight")
     }
 }

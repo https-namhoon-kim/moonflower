@@ -1,7 +1,7 @@
 package com.kmm.moonflower.core.local
 
 import android.content.Context
-import com.example.moonflowerproto.database.AppDatabase
+import com.kmm.moonflower.database.AppDatabase
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 

@@ -1,11 +1,11 @@
 package com.kmm.moonflower.core.local
 
-import com.example.moonflowerproto.database.AppDatabase
+import com.kmm.moonflower.database.AppDatabase
 import database.AppDatabaseQueries
 import database.Plants
 
 class PlantDataSourceImpl(
-    private val database: AppDatabase,
+    database: AppDatabase,
 ) : PlantDataSource {
 
     private val query: AppDatabaseQueries = database.appDatabaseQueries

@@ -1,6 +1,6 @@
 package com.kmm.moonflower.core.local
 
-import com.example.moonflowerproto.database.AppDatabase
+import com.kmm.moonflower.database.AppDatabase
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
 
