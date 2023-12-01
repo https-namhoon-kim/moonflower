@@ -10,14 +10,14 @@ import kotlinx.coroutines.withContext
 /**
  * @param dispatcher 안드로이드 io 디스패처 사용
  */
-class PlantsDataSource(
+class PlantsDataSourceImpl(
     private val database: AppDatabase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.Default
-) {
+) : PlantDataSource {
 
     private val query : AppDatabaseQueries = database.appDatabaseQueries
 
-    suspend fun insertOrReplacePlants(plants: List<Plant>) {
+    override suspend fun insertOrReplacePlants(plants: List<Plant>) {
         withContext(dispatcher) {
             query.run {
                 transaction {
@@ -36,18 +36,18 @@ class PlantsDataSource(
         }
     }
 
-    suspend fun getAllPlants(): List<Plant> = withContext(dispatcher) {
+    override suspend fun getAllPlants(): List<Plant> = withContext(dispatcher) {
         query.getPlants()
             .executeAsList()
             .map { it.toPlantModel() }
     }
 
-    suspend fun getPlantById(id: String): Plant? = withContext(dispatcher) {
+    override suspend fun getPlantById(id: String): Plant? = withContext(dispatcher) {
         query.getPlant(id)
             .executeAsOneOrNull()?.toPlantModel()
     }
 
-    suspend fun getPlantsWithGrowZoneNumber(growZoneNumber: Int): List<Plant> =
+    override suspend fun getPlantsWithGrowZoneNumber(growZoneNumber: Int): List<Plant> =
         withContext(dispatcher) {
             query.getPlantsWithGrowZoneNumber(growZoneNumber.toLong())
                 .executeAsList()
