@@ -80,6 +80,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
+    //add the commonMain Resources
+    sourceSets["main"].resources.setSrcDirs(
+        listOf(
+//            "src/androidMain/resources",
+            "src/commonMain/resources"
+        )
+    )
 }
 
 sqldelight {
