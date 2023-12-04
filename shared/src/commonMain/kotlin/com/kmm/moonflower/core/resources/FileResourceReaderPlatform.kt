@@ -1,9 +1,8 @@
 package com.kmm.moonflower.core.resources
 
 
-expect class FileResourceReaderPlatform {
-
-    suspend fun getJsonFileToString(fileName : String) : String
+expect class FileResourceReaderPlatform : FileResourceReader {
+//    override suspend fun getJsonFileToString(fileName: String): String
 }
 
 // TODO

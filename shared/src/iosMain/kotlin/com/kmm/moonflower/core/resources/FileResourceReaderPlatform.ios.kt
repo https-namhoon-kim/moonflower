@@ -8,8 +8,9 @@ import platform.Foundation.NSUTF8StringEncoding
 import platform.Foundation.create
 import platform.Foundation.dataWithContentsOfURL
 
-actual class FileResourceReaderPlatform {
-    actual suspend fun getJsonFileToString(fileName: String/* ex) plants */): String {
+actual class FileResourceReaderPlatform : FileResourceReader {
+
+      override suspend fun getJsonFileToString(fileName: String/* ex) plants */): String {
         val path = NSBundle.mainBundle.pathForResource("fileName", "json")
             ?: throw Exception("Cannot find resource: $fileName")
         val url = NSURL.fileURLWithPath(path)

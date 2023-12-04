@@ -1,7 +1,8 @@
 package com.kmm.moonflower.core.resources
 
-actual class FileResourceReaderPlatform {
+actual class FileResourceReaderPlatform : FileResourceReader {
 
-    actual suspend fun getJsonFileToString(fileName: String): String =
-        this::class.java.classLoader.getResourceAsStream(fileName).bufferedReader().use { it.readText() }
+    override suspend fun getJsonFileToString(fileName: String): String =
+        this::class.java.classLoader.getResourceAsStream(fileName).bufferedReader()
+            .use { it.readText() }
 }
