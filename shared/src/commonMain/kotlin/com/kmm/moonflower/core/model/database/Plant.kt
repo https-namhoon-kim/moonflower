@@ -1,4 +1,4 @@
-package com.kmm.moonflower.core.local
+package com.kmm.moonflower.core.model.database
 
 data class Plant(
     val plantId : String ,

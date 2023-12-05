@@ -1,5 +1,7 @@
 package com.kmm.moonflower.core.local
 
+import com.kmm.moonflower.core.model.database.Garden
+
 interface GardenPlantingDataSource {
 
     suspend fun getGardenPlanting(): List<Garden>
