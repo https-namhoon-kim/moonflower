@@ -47,6 +47,11 @@ kotlin {
                 // database
                 implementation(libs.squareup.sqldelight)
                 implementation(libs.squareup.sqldelight.coroutines.extensions)
+
+                implementation(libs.ktor.core)
+                implementation(libs.ktor.serialization)
+                implementation(libs.ktor.serialization.json)
+
             }
         }
         val commonTest by getting {
@@ -54,17 +59,21 @@ kotlin {
                 implementation(libs.kotlinx.test)
             }
         }
+
         val androidMain by getting {
             dependencies {
+                implementation(libs.ktor.android)
                 // database
                 implementation(libs.squareup.sqldelight.android)
             }
-
         }
+
         val iosMain by getting {
             dependencies {
+                implementation(libs.ktor.ios)
                 // database
                 implementation(libs.squareup.sqldelight.native)
+
             }
         }
     }
