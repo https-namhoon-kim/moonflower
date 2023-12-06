@@ -1,0 +1,47 @@
+CREATE TABLE Plants (
+    id TEXT NOT NULL PRIMARY KEY ,
+    name TEXT NOT NULL ,
+    description TEXT NOT NULL ,
+    growZoneNumber INTEGER NOT NULL ,
+    wateringInterval INTEGER NOT NULL ,
+    imageUrl TEXT NOT NULL
+);
+
+
+CREATE TABLE GardenPlanting (
+    id INTEGER PRIMARY KEY AUTOINCREMENT ,
+    plantId TEXT NOT NULL ,
+    plantDate INTEGER NOT NULL ,
+    lastWateringDate INTEGER NOT NULL ,
+    FOREIGN KEY(plantId) REFERENCES Plants(id)
+--         ON DELETE CASCADE
+);
+
+
+-- PlantDao
+getPlants:
+SELECT * FROM Plants ORDER BY name;
+
+getPlantsWithGrowZoneNumber:
+SELECT * FROM Plants WHERE growZoneNumber = ? ORDER BY name;
+
+getPlant:
+SELECT * FROM Plants WHERE id = ?;
+
+insertPlantsAll:
+INSERT OR REPLACE INTO Plants (id,name,description,growZoneNumber,wateringInterval,imageUrl)
+VALUES (?, ?,?,?,?,?);
+
+
+-- GardenPlantingDao
+getGardenPlanting:
+SELECT * FROM GardenPlanting;
+
+isPlanted:
+SELECT EXISTS(SELECT 1 FROM GardenPlanting WHERE plantId = ? LIMIT 1);
+
+insertGardenPlanting:
+INSERT INTO GardenPlanting (plantId,plantDate,lastWateringDate) VALUES (?, ?, ?);
+
+deleteGardenPlanting:
+DELETE FROM GardenPlanting WHERE id = ?;

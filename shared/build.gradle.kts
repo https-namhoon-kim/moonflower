@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("com.squareup.sqldelight")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -43,9 +44,14 @@ kotlin {
                 @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
+                // database
+                implementation(libs.squareup.sqldelight)
+                implementation(libs.squareup.sqldelight.coroutines.extensions)
+
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.serialization)
                 implementation(libs.ktor.serialization.json)
+
             }
         }
         val commonTest by getting {
@@ -57,12 +63,17 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(libs.ktor.android)
+                // database
+                implementation(libs.squareup.sqldelight.android)
             }
         }
 
         val iosMain by getting {
             dependencies {
                 implementation(libs.ktor.ios)
+                // database
+                implementation(libs.squareup.sqldelight.native)
+
             }
         }
     }
@@ -77,5 +88,20 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    //add the commonMain Resources
+    sourceSets["main"].resources.setSrcDirs(
+        listOf(
+//            "src/androidMain/resources",
+            "src/commonMain/resources"
+        )
+    )
+}
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.kmm.moonflower.database"
+        sourceFolders = listOf("sqldelight")
     }
 }
