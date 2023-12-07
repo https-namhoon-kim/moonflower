@@ -6,6 +6,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.compose")
     id("com.squareup.sqldelight")
+    kotlin("plugin.serialization")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -51,6 +52,7 @@ kotlin {
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.serialization)
                 implementation(libs.ktor.serialization.json)
+                implementation(libs.kotlinx.serialization.json)
 
             }
         }
@@ -89,7 +91,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-
     //add the commonMain Resources
     sourceSets["main"].resources.setSrcDirs(
         listOf(
