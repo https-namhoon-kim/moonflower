@@ -1,11 +1,15 @@
 package com.kmm.moonflower.feature.plant.data.local
 
-import com.kmm.moonflower.core.model.database.Plant
 import com.kmm.moonflower.feature.plant.data.repository.mapper.PlantMapper
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
+import com.kmm.moonflower.database.AppDatabase
 
 class PlantLocalDataSourceImpl(
-    query: AppDatabaseQueries
+    database: AppDatabase,
 ): PlantLocalDataSource {
+
+    private val query: AppDatabaseQueries = database.appDatabaseQueries
+
     override suspend fun insertOrReplacePlants(plants: List<Plant>) {
         query.run {
             transaction {

@@ -1,6 +1,6 @@
 package com.kmm.moonflower.feature.plant.data.local
 
-import com.kmm.moonflower.core.model.database.Plant
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
 
 interface PlantLocalDataSource {
     suspend fun insertOrReplacePlants(plants: List<Plant>)
