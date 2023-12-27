@@ -34,8 +34,8 @@ class PlantLocalDataSourceImpl(
         }
     }
 
-    override suspend fun getPlantById(id: String): Plant? {
-        val plants = query.getPlant(id).executeAsOneOrNull() ?: return null
+    override suspend fun getPlantById(id: String): Plant {
+        val plants = query.getPlant(id).executeAsOneOrNull()
         return PlantMapper.toPlant(plants)
     }
 

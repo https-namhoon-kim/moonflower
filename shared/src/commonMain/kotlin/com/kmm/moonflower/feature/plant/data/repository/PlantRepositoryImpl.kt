@@ -15,7 +15,7 @@ class PlantRepositoryImpl(
         return local.getAllPlants()
     }
 
-    override suspend fun getPlantById(id: String): Plant? {
+    override suspend fun getPlantById(id: String): Plant {
         return local.getPlantById(id)
     }
 
