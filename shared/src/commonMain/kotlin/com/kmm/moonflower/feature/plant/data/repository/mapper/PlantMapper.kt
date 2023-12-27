@@ -1,6 +1,7 @@
 package com.kmm.moonflower.feature.plant.data.repository.mapper
 
 import com.kmm.moonflower.feature.plant.domain.vo.Plant
+import database.Plants
 
 object PlantMapper {
     fun toPlant(dao: Plants): Plant {

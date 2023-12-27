@@ -3,6 +3,7 @@ package com.kmm.moonflower.feature.plant.data.local
 import com.kmm.moonflower.feature.plant.data.repository.mapper.PlantMapper
 import com.kmm.moonflower.feature.plant.domain.vo.Plant
 import com.kmm.moonflower.database.AppDatabase
+import database.AppDatabaseQueries
 
 class PlantLocalDataSourceImpl(
     database: AppDatabase,
@@ -28,11 +29,14 @@ class PlantLocalDataSourceImpl(
     }
 
     override suspend fun getAllPlants(): List<Plant> {
-        return query.getPlants().executeAsList().map { it.toPlantModel() }
+        return query.getPlants().executeAsList().map {
+            PlantMapper.toPlant(it)
+        }
     }
 
     override suspend fun getPlantById(id: String): Plant? {
-        return query.getPlant(id).executeAsOneOrNull()?.toPlantModel()
+        val plants = query.getPlant(id).executeAsOneOrNull() ?: return null
+        return PlantMapper.toPlant(plants)
     }
 
     override suspend fun getPlantsWithGrowZoneNumber(growZoneNumber: Int): List<Plant> {
