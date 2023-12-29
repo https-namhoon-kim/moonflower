@@ -3,6 +3,9 @@ package com.kmm.moonflower.feature.plant.data.local
 import com.kmm.moonflower.feature.plant.domain.vo.Plant
 
 interface PlantLocalDataSource {
+
+    suspend fun getPlantsFromResource(filePath: String): List<Plant>
+
     suspend fun insertOrReplacePlants(plants: List<Plant>)
 
     suspend fun getAllPlants(): List<Plant>
