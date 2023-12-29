@@ -1,4 +1,33 @@
 package com.kmm.moonflower.feature.garden.data.repository
 
-class GardenPlantingRepositoryImpl {
+import com.kmm.moonflower.feature.garden.data.local.GardenPlantingLocalDataSource
+import com.kmm.moonflower.feature.garden.domain.repository.GardenPlantingRepository
+import com.kmm.moonflower.feature.garden.domain.vo.Garden
+
+class GardenPlantingRepositoryImpl(
+    private val local: GardenPlantingLocalDataSource,
+): GardenPlantingRepository {
+    override suspend fun getGardenPlanting(): List<Garden> {
+        return local.getGardenPlanting()
+    }
+
+    override suspend fun isExistPlantInGardenPlanting(plantId: String): Boolean {
+        return local.isExistPlantInGardenPlanting(plantId)
+    }
+
+    override suspend fun insertGardenPlanting(
+        plantId: String,
+        plantDate: Int,
+        lastWateringDate: Int
+    ) {
+        local.insertGardenPlanting(
+            plantId = plantId,
+            plantDate = plantDate,
+            lastWateringDate = lastWateringDate,
+        )
+    }
+
+    override suspend fun deleteGardenPlanting(gardenId: Int) {
+        local.deleteGardenPlanting(gardenId)
+    }
 }
