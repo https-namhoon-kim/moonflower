@@ -16,6 +16,7 @@ plugins {
     id("com.diffplug.spotless") version "6.4.1"
     id("com.google.devtools.ksp") version "1.9.10-1.0.13" apply false
     id("org.jetbrains.compose") version "1.5.3"
+    kotlin("plugin.serialization") version "1.9.10"
 }
 
 spotless {

@@ -6,9 +6,10 @@ import com.kmm.moonflower.feature.plant.domain.vo.Plant
 
 class PlantRepositoryImpl(
     private val local: PlantLocalDataSource,
-): PlantRepository {
-    override suspend fun insertOrReplacePlants(plants: List<Plant>) {
-        local.insertOrReplacePlants(plants)
+) : PlantRepository {
+    override suspend fun insertOrReplacePlants(filePath: String) {
+        val plant = local.getPlantsFromResource(filePath)
+        local.insertOrReplacePlants(plant)
     }
 
     override suspend fun getAllPlants(): List<Plant> {

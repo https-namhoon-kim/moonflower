@@ -1,15 +1,24 @@
 package com.kmm.moonflower.feature.plant.data.local
 
+import com.kmm.moonflower.core.resources.FileResourceReader
 import com.kmm.moonflower.feature.plant.data.repository.mapper.PlantMapper
 import com.kmm.moonflower.feature.plant.domain.vo.Plant
 import com.kmm.moonflower.database.AppDatabase
 import database.AppDatabaseQueries
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 class PlantLocalDataSourceImpl(
     database: AppDatabase,
-): PlantLocalDataSource {
+    private val resource: FileResourceReader,
+) : PlantLocalDataSource {
 
     private val query: AppDatabaseQueries = database.appDatabaseQueries
+
+    override suspend fun getPlantsFromResource(filePath: String): List<Plant> {
+        val platsJson = resource.getJsonFileToString(filePath)
+        return Json.decodeFromString<List<Plant>>(platsJson)
+    }
 
     override suspend fun insertOrReplacePlants(plants: List<Plant>) {
         query.run {
