@@ -15,8 +15,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.kmm.moonflower.android.R
-import com.kmm.moonflower.android.data.Plant
 import com.kmm.moonflower.android.viewmodels.PlantListViewModel
+
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
 
 @Composable
 fun PlantListScreen(

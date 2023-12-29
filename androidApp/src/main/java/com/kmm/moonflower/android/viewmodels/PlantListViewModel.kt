@@ -5,13 +5,15 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.kmm.moonflower.android.data.Plant
-import com.kmm.moonflower.android.data.PlantRepository
+import com.kmm.moonflower.feature.plant.domain.repository.PlantRepository
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 /**
  * The ViewModel for plant list.
@@ -28,9 +30,9 @@ class PlantListViewModel @Inject internal constructor(
 
     val plants: LiveData<List<Plant>> = growZone.flatMapLatest { zone ->
         if (zone == NO_GROW_ZONE) {
-            plantRepository.getPlants()
+            plantRepository.getAllPlants().asFlow()
         } else {
-            plantRepository.getPlantsWithGrowZoneNumber(zone)
+            plantRepository.getPlantsWithGrowZoneNumber(zone).asFlow()
         }
     }.asLiveData()
 

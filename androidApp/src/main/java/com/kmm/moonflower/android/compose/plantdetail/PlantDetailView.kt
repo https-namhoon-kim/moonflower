@@ -75,16 +75,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.google.accompanist.themeadapter.material.MdcTheme
 import com.kmm.moonflower.android.R
 import com.kmm.moonflower.android.compose.Dimens
 import com.kmm.moonflower.android.compose.utils.SunflowerImage
 import com.kmm.moonflower.android.compose.utils.TextSnackbarContainer
 import com.kmm.moonflower.android.compose.visible
-import com.kmm.moonflower.android.data.Plant
 import com.kmm.moonflower.android.databinding.ItemPlantDescriptionBinding
 import com.kmm.moonflower.android.viewmodels.PlantDetailViewModel
+
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
 
 /**
  * As these callbacks are passed in through multiple Composables, to avoid having to name

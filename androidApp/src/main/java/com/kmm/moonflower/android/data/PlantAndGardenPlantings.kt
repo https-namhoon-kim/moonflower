@@ -2,8 +2,7 @@ package com.kmm.moonflower.android.data
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.kmm.moonflower.android.data.GardenPlanting
-import com.kmm.moonflower.android.data.Plant
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
 
 /**
  * This class captures the relationship between a [Plant] and a user's [GardenPlanting], which is

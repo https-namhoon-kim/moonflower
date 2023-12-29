@@ -3,7 +3,6 @@ package com.kmm.moonflower.android.di
 import android.content.Context
 import com.kmm.moonflower.android.data.AppDatabase
 import com.kmm.moonflower.android.data.GardenPlantingDao
-import com.kmm.moonflower.android.data.PlantDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -20,7 +20,6 @@ import androidx.compose.ui.text.style.TextAlign
 import com.kmm.moonflower.android.compose.card
 import com.kmm.moonflower.android.compose.utils.SunflowerImage
 import com.kmm.moonflower.android.R
-import com.kmm.moonflower.android.data.Plant
 import com.kmm.moonflower.android.data.UnsplashPhoto
 
 @Composable

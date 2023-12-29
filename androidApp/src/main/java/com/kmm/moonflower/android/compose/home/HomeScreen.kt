@@ -1,9 +1,7 @@
 package com.kmm.moonflower.android.compose.home
 
-import androidx.activity.ComponentActivity
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +26,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.rememberNestedScrollInteropConnection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -39,9 +36,10 @@ import com.google.accompanist.themeadapter.material.MdcTheme
 import com.kmm.moonflower.android.compose.garden.GardenScreen
 import com.kmm.moonflower.android.R
 import com.kmm.moonflower.android.compose.plantlist.PlantListScreen
-import com.kmm.moonflower.android.data.Plant
 import com.kmm.moonflower.android.databinding.HomeScreenBinding
 import kotlinx.coroutines.launch
+
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
 
 enum class SunflowerPage(
     @StringRes val titleResId: Int,

@@ -11,7 +11,7 @@ object PlantMapper {
                 name = "",
                 description = "",
                 growZoneNumber = -1,
-                wateringInterval = -1,
+                wateringInterval = 7,
                 imageUrl = "",
             )
         } else {

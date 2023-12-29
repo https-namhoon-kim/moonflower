@@ -43,7 +43,6 @@ import androidx.compose.material.Text
 import com.google.accompanist.themeadapter.material.MdcTheme
 import com.kmm.moonflower.android.compose.card
 import com.kmm.moonflower.android.data.GardenPlanting
-import com.kmm.moonflower.android.data.Plant
 
 @Composable
 fun GardenScreen(

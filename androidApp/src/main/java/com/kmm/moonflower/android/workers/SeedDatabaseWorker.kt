@@ -8,7 +8,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.kmm.moonflower.android.data.AppDatabase
-import com.kmm.moonflower.android.data.Plant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
