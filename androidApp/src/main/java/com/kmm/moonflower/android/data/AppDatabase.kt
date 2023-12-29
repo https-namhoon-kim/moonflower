@@ -9,10 +9,10 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
-import com.kmm.moonflower.android.utilities.DATABASE_NAME
-import com.kmm.moonflower.android.utilities.PLANT_DATA_FILENAME
 import com.kmm.moonflower.android.workers.SeedDatabaseWorker
 import com.kmm.moonflower.android.workers.SeedDatabaseWorker.Companion.KEY_FILENAME
+import com.kmm.moonflower.core.utilities.DATABASE_NAME
+import com.kmm.moonflower.core.utilities.PLANT_DATA_FILENAME
 
 
 /**
