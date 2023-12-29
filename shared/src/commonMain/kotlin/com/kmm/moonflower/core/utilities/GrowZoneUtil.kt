@@ -1,4 +1,4 @@
-package com.kmm.moonflower.android.utilities
+package com.kmm.moonflower.core.utilities
 
 import kotlin.math.abs
 
