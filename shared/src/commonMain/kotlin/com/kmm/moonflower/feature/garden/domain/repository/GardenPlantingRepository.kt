@@ -1,9 +1,8 @@
-package com.kmm.moonflower.core.local
+package com.kmm.moonflower.feature.garden.domain.repository
 
-import com.kmm.moonflower.core.model.database.Garden
+import com.kmm.moonflower.feature.garden.domain.vo.Garden
 
-interface GardenPlantingDataSource {
-
+interface GardenPlantingRepository {
     suspend fun getGardenPlanting(): List<Garden>
 
     suspend fun isExistPlantInGardenPlanting(plantId: String): Boolean
