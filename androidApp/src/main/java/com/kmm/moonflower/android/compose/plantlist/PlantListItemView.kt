@@ -21,7 +21,7 @@ import com.kmm.moonflower.android.compose.card
 import com.kmm.moonflower.android.compose.utils.SunflowerImage
 import com.kmm.moonflower.android.R
 import com.kmm.moonflower.android.data.Plant
-import com.kmm.moonflower.android.data.UnsplashPhoto
+import com.kmm.moonflower.feature.unsplash.domain.vo.UnsplashPhoto
 
 @Composable
 fun PlantListItem(plant: Plant, onClick: () -> Unit) {
