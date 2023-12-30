@@ -1,4 +1,4 @@
-package com.kmm.moonflower.core.api.data.remote
+package com.kmm.moonflower.core.api
 
 import io.ktor.client.HttpClient
 
