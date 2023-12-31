@@ -3,19 +3,20 @@ package com.kmm.moonflower.android.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.kmm.moonflower.android.api.UnsplashService
+import com.kmm.moonflower.di.UnsplashFeatureModule
+import com.kmm.moonflower.feature.unsplash.domain.vo.UnsplashPhoto
 
 private const val UNSPLASH_STARTING_PAGE_INDEX = 1
 
 class UnsplashPagingSource(
-    private val service: UnsplashService,
     private val query: String
 ) : PagingSource<Int, UnsplashPhoto>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UnsplashPhoto> {
         val page = params.key ?: UNSPLASH_STARTING_PAGE_INDEX
         return try {
-            val response = service.searchPhotos(query, page, params.loadSize)
+            val repository = UnsplashFeatureModule.providerUnsplashRepository()
+            val response = repository.searchPhotos(query, page, params.loadSize, null)
             val photos = response.results
             LoadResult.Page(
                 data = photos,

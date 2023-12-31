@@ -25,10 +25,10 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.kmm.moonflower.android.compose.plantlist.PhotoListItem
 import com.kmm.moonflower.android.R
-import com.kmm.moonflower.android.data.UnsplashPhoto
-import com.kmm.moonflower.android.data.UnsplashPhotoUrls
-import com.kmm.moonflower.android.data.UnsplashUser
 import com.kmm.moonflower.android.viewmodels.GalleryViewModel
+import com.kmm.moonflower.feature.unsplash.domain.vo.UnsplashPhoto
+import com.kmm.moonflower.feature.unsplash.domain.vo.UnsplashPhotoUrls
+import com.kmm.moonflower.feature.unsplash.domain.vo.UnsplashUser
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
