@@ -9,7 +9,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 class PlantLocalDataSourceImpl(
-    database: AppDatabase,
+    private val database: AppDatabase,
     private val resource: FileResourceReader,
 ) : PlantLocalDataSource {
 
