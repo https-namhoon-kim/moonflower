@@ -14,11 +14,6 @@ class AppDelegate : NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
 
-        // db init
-        DatabaseModule().setDB(
-            driver: DatabaseDriverFactory().createDriver()
-        )
-
         // plants insert -> 들어갔는지 확인
         PlantFeatureModule().provideInsertOrReplacePlants().invoke(filePath: "json/plants.json") { _ in
             PlantFeatureModule().provideFetchPlantList().invoke { listPlants, error in
