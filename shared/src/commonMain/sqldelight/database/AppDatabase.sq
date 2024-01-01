@@ -40,6 +40,22 @@ SELECT * FROM GardenPlanting;
 isPlanted:
 SELECT EXISTS(SELECT 1 FROM GardenPlanting WHERE plantId = ? LIMIT 1);
 
+getPlantedGardens:
+SELECT
+    Plants.id AS plantId,
+    Plants.name AS plantName,
+    Plants.description AS plantDescription,
+    Plants.growZoneNumber AS plantGrowZoneNumber,
+    Plants.wateringInterval AS plantWateringInterval,
+    Plants.imageUrl AS plantImageUrl,
+    GardenPlanting.id AS gardenId,
+    GardenPlanting.plantId AS gardenPlantId,
+    GardenPlanting.plantDate AS gardenPlantDate,
+    GardenPlanting.lastWateringDate AS gardenLastWateringDate
+FROM Plants
+JOIN GardenPlanting ON Plants.id = GardenPlanting.plantId
+WHERE Plants.id IN (SELECT DISTINCT(plantId) FROM GardenPlanting);
+
 insertGardenPlanting:
 INSERT INTO GardenPlanting (plantId,plantDate,lastWateringDate) VALUES (?, ?, ?);
 

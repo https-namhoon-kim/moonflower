@@ -3,6 +3,7 @@ package com.kmm.moonflower.feature.garden.data.local
 import com.kmm.moonflower.database.AppDatabase
 import com.kmm.moonflower.feature.garden.data.repository.mapper.GardenPlantingMapper
 import com.kmm.moonflower.feature.garden.domain.vo.Garden
+import com.kmm.moonflower.feature.garden.domain.vo.PlantAndGardenPlantings
 import database.AppDatabaseQueries
 
 
@@ -18,6 +19,10 @@ class GardenPlantingLocalDataSourceImpl(
 
     override suspend fun isExistPlantInGardenPlanting(plantId: String): Boolean {
         return query.isPlanted(plantId).executeAsOne()
+    }
+
+    override suspend fun getPlantedGardens(): List<PlantAndGardenPlantings> {
+        return query.getPlantedGardens().executeAsList().map { GardenPlantingMapper.toPlantAndGardenPlantings(it) }
     }
 
     override suspend fun insertGardenPlanting(
