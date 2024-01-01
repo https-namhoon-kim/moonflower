@@ -1,4 +1,3 @@
-
 package com.kmm.moonflower.android.compose
 
 import android.app.Activity
@@ -8,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ShareCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -19,6 +19,8 @@ import com.kmm.moonflower.android.compose.gallery.GalleryScreen
 import com.kmm.moonflower.android.compose.home.HomeScreen
 import com.kmm.moonflower.android.compose.home.SunflowerPage
 import com.kmm.moonflower.android.compose.plantdetail.PlantDetailsScreen
+import com.kmm.moonflower.android.compose.utils.getSavedStateViewModelProviderForPlantDetail
+import com.kmm.moonflower.android.viewmodels.PlantDetailViewModel
 
 @Composable
 fun SunflowerApp(
@@ -55,8 +57,15 @@ fun SunFlowerNavHost(
             arguments = listOf(navArgument("plantId") {
                 type = NavType.StringType
             })
-        ) {
+        ) { navBackStackEntry ->
+            val plantDetailViewModel: PlantDetailViewModel = viewModel(
+                factory = getSavedStateViewModelProviderForPlantDetail(
+                    navBackStackEntry,
+                    navBackStackEntry.arguments
+                )
+            )
             PlantDetailsScreen(
+                plantDetailsViewModel = plantDetailViewModel,
                 onBackClick = { navController.navigateUp() },
                 onShareClick = {
                     createShareIntent(activity, it)

@@ -22,8 +22,8 @@ class GardenPlantingRepositoryImpl(
 
     override suspend fun insertGardenPlanting(
         plantId: String,
-        plantDate: Int,
-        lastWateringDate: Int
+        plantDate: Long,
+        lastWateringDate: Long
     ) {
         local.insertGardenPlanting(
             plantId = plantId,

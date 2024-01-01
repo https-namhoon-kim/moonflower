@@ -10,7 +10,7 @@ interface GardenPlantingRepository {
 
     suspend fun getPlantedGardens(): List<PlantAndGardenPlantings>
 
-    suspend fun insertGardenPlanting(plantId: String, plantDate: Int, lastWateringDate: Int)
+    suspend fun insertGardenPlanting(plantId: String, plantDate: Long, lastWateringDate: Long)
 
     suspend fun deleteGardenPlanting(gardenId : Int)
 }

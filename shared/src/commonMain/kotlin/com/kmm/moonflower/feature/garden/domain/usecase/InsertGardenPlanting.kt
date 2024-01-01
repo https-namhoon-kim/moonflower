@@ -7,8 +7,8 @@ class InsertGardenPlanting(
 ) {
     suspend operator fun invoke(
         plantId: String,
-        plantDate: Int,
-        lastWateringDate: Int
+        plantDate: Long,
+        lastWateringDate: Long
     ) {
         repository.insertGardenPlanting(
             plantId = plantId,
