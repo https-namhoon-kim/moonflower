@@ -32,7 +32,7 @@ import javax.inject.Inject
 /**
  * The ViewModel used in [PlantDetailFragment].
  */
-class PlantDetailViewModel @Inject constructor(
+class PlantDetailViewModel (
     savedStateHandle:SavedStateHandle,
     private val plantRepository: PlantRepository = PlantFeatureModule.providePlantRepository(),
     private val gardenPlantingRepository: GardenPlantingRepository = GardenPlantingFeatureModule.provideGardenPlantingRepository()
