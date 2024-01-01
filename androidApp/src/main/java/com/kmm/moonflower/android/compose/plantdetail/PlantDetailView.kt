@@ -71,7 +71,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidViewBinding
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.text.HtmlCompat
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
@@ -82,7 +81,7 @@ import com.kmm.moonflower.android.compose.Dimens
 import com.kmm.moonflower.android.compose.utils.SunflowerImage
 import com.kmm.moonflower.android.compose.utils.TextSnackbarContainer
 import com.kmm.moonflower.android.compose.visible
-import com.kmm.moonflower.android.data.Plant
+import com.kmm.moonflower.feature.plant.domain.vo.Plant
 import com.kmm.moonflower.android.databinding.ItemPlantDescriptionBinding
 import com.kmm.moonflower.android.viewmodels.PlantDetailViewModel
 
@@ -99,7 +98,7 @@ data class PlantDetailsCallbacks(
 
 @Composable
 fun PlantDetailsScreen(
-    plantDetailsViewModel: PlantDetailViewModel = hiltViewModel(),
+    plantDetailsViewModel: PlantDetailViewModel ,
     onBackClick: () -> Unit,
     onShareClick: (String) -> Unit,
     onGalleryClick: (Plant) -> Unit,
@@ -573,7 +572,7 @@ private fun PlantDetailContentPreview() {
     MdcTheme {
         Surface {
             PlantDetails(
-                Plant("plantId", "Tomato", "HTML<br>description", 6),
+                Plant("plantId", "Tomato", "HTML<br>description", 6, 6, ""),
                 true,
                 true,
                 PlantDetailsCallbacks({ }, { }, { }, { })
