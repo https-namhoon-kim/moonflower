@@ -55,7 +55,7 @@ class PlantDetailViewModel(
     init {
         viewModelScope.launch {
             _plant.value = plantRepository.getPlantById(plantId)
-            _isPlanted.value = gardenPlantingRepository.isExistPlantInGardenPlanting(plantId)
+            checkIsPlants()
         }
     }
 
@@ -68,7 +68,12 @@ class PlantDetailViewModel(
                 lastWateringDate = time,
             )
             _showSnackbar.value = true
+            checkIsPlants()
         }
+    }
+
+    private suspend fun checkIsPlants(){
+        _isPlanted.value = gardenPlantingRepository.isExistPlantInGardenPlanting(plantId)
     }
 
     fun dismissSnackbar() {
