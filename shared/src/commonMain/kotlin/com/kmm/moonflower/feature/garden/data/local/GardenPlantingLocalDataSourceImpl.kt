@@ -22,8 +22,8 @@ class GardenPlantingLocalDataSourceImpl(
 
     override suspend fun insertGardenPlanting(
         plantId: String,
-        plantDate: Int,
-        lastWateringDate: Int
+        plantDate: Long,
+        lastWateringDate: Long
     ) {
         query.insertGardenPlanting(
             plantId = plantId,

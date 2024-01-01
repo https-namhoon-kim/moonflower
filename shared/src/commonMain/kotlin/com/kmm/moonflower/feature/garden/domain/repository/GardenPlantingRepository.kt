@@ -7,7 +7,7 @@ interface GardenPlantingRepository {
 
     suspend fun isExistPlantInGardenPlanting(plantId: String): Boolean
 
-    suspend fun insertGardenPlanting(plantId: String, plantDate: Int, lastWateringDate: Int)
+    suspend fun insertGardenPlanting(plantId: String, plantDate: Long, lastWateringDate: Long)
 
     suspend fun deleteGardenPlanting(gardenId : Int)
 }
