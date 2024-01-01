@@ -3,6 +3,7 @@ package com.kmm.moonflower.feature.garden.data.repository
 import com.kmm.moonflower.feature.garden.data.local.GardenPlantingLocalDataSource
 import com.kmm.moonflower.feature.garden.domain.repository.GardenPlantingRepository
 import com.kmm.moonflower.feature.garden.domain.vo.Garden
+import com.kmm.moonflower.feature.garden.domain.vo.PlantAndGardenPlantings
 
 class GardenPlantingRepositoryImpl(
     private val local: GardenPlantingLocalDataSource,
@@ -13,6 +14,10 @@ class GardenPlantingRepositoryImpl(
 
     override suspend fun isExistPlantInGardenPlanting(plantId: String): Boolean {
         return local.isExistPlantInGardenPlanting(plantId)
+    }
+
+    override suspend fun getPlantedGardens(): List<PlantAndGardenPlantings> {
+        return local.getPlantedGardens()
     }
 
     override suspend fun insertGardenPlanting(
