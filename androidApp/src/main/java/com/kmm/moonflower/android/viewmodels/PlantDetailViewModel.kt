@@ -32,10 +32,10 @@ import javax.inject.Inject
 /**
  * The ViewModel used in [PlantDetailFragment].
  */
-class PlantDetailViewModel (
-    savedStateHandle:SavedStateHandle,
-    private val plantRepository: PlantRepository = PlantFeatureModule.providePlantRepository(),
-    private val gardenPlantingRepository: GardenPlantingRepository = GardenPlantingFeatureModule.provideGardenPlantingRepository()
+class PlantDetailViewModel(
+    savedStateHandle: SavedStateHandle,
+    private val plantRepository: PlantRepository,
+    private val gardenPlantingRepository: GardenPlantingRepository
 ) : ViewModel() {
 
     val plantId: String = savedStateHandle.get<String>(PLANT_ID_SAVED_STATE_KEY)!!
@@ -44,7 +44,7 @@ class PlantDetailViewModel (
     val isPlanted: LiveData<Boolean>
         get() = _isPlanted
 
-    private val _plant = MutableLiveData(Plant(plantId , "","",-1,-1,""))
+    private val _plant = MutableLiveData(Plant(plantId, "", "", -1, -1, ""))
     val plant: LiveData<Plant>
         get() = _plant
 
@@ -56,16 +56,16 @@ class PlantDetailViewModel (
         viewModelScope.launch {
             _plant.value = plantRepository.getPlantById(plantId)
             _isPlanted.value = gardenPlantingRepository.isExistPlantInGardenPlanting(plantId)
-         }
+        }
     }
 
     fun addPlantToGarden() {
         viewModelScope.launch {
             val time = System.currentTimeMillis()
             gardenPlantingRepository.insertGardenPlanting(
-                plantId = plantId ,
-                plantDate = time ,
-                lastWateringDate = time ,
+                plantId = plantId,
+                plantDate = time,
+                lastWateringDate = time,
             )
             _showSnackbar.value = true
         }
