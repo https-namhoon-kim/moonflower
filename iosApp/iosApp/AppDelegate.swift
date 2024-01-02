@@ -15,11 +15,11 @@ class AppDelegate : NSObject, UIApplicationDelegate {
     ) -> Bool {
 
         // plants insert -> 들어갔는지 확인
-//        PlantFeatureModule().provideInsertOrReplacePlants().invoke(filePath: "json/plants.json") { _ in
-//            PlantFeatureModule().provideFetchPlantList().invoke { listPlants, error in
-//                print(listPlants)
-//            }
-//        }
+        PlantFeatureModule().providePlantRepository().insertOrReplacePlants(filePath: "json/plants.json") { _ in
+            PlantFeatureModule().providePlantRepository().getAllPlants(){ listPlants, error in
+                print(listPlants)
+            }
+        }
 
         return true
     }
