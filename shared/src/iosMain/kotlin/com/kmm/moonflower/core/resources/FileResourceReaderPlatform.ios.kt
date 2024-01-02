@@ -10,8 +10,8 @@ import platform.Foundation.dataWithContentsOfURL
 
 actual class FileResourceReaderPlatform : FileResourceReader {
 
-      override suspend fun getJsonFileToString(fileName: String/* ex) plants */): String {
-        val path = NSBundle.mainBundle.pathForResource("fileName", "json")
+      override suspend fun getJsonFileToString(fileName: String/* ex) json/plants */): String {
+        val path = NSBundle.mainBundle.pathForResource(fileName, "json")
             ?: throw Exception("Cannot find resource: $fileName")
         val url = NSURL.fileURLWithPath(path)
         val data = NSData.dataWithContentsOfURL(url)
